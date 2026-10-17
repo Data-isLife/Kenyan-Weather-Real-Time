@@ -25,3 +25,6 @@ The county and sub-county list comes from the [Kenya Administrative Divisions da
 
 Current weather is provided by the [OpenWeatherMap Current Weather API](https://openweathermap.org/api/current).
 
+## Live link 
+(https://kenyan-weather-real-time-phqokdpqxas5kb5xpe54kt.streamlit.app/)
+
