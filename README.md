@@ -1,32 +1,38 @@
-# Kenya Weather
+# Kenya Weather 🌦️
 
-A browser-based weather app for 47 Kenyan counties and 290 sub-county-level divisions. It uses representative WGS84 coordinates from the Open Admin Data Kenya administrative divisions dataset and fetches current conditions from OpenWeatherMap.
+Check the current weather for your location or a county and sub-county in Kenya. The app also gives simple suggestions to help you prepare for the conditions.
 
-## Publish and share without a code editor
+## Use the app
 
-1. Create a **Public** repository on GitHub.
-2. Choose **Add file → Upload files** and upload `app.py`, `requirements.txt`, and `README.md` from this folder. Do not upload or commit an API key.
-3. Sign in to [Streamlit Community Cloud](https://share.streamlit.io/) with GitHub and choose **Create app**.
-4. Select your repository, the `main` branch, and `app.py`, then deploy.
-5. Share the Streamlit URL. Each visitor enters their own OpenWeatherMap API key.
+1. Open the app in your browser.
+2. Choose **Use my current location** and press **Get location**. Allow your browser to share your location when asked.
+3. If you prefer not to share your location, choose **Choose a county and sub-county** instead.
+4. Press **Get weather** and wait a few seconds for the result.
 
-## Run on Windows (optional)
+You do not need to create an OpenWeatherMap account or enter an API key to use the deployed app. Location access is optional. If you deny permission, you can still choose a county and sub-county manually.
 
-Open PowerShell and run these two commands. They install the required packages and start the app in Streamlit:
+## What the app shows
 
-```powershell
-py -m pip install -r "C:\path\to\kenya-weather-app\requirements.txt"
-py -m streamlit run "C:\path\to\kenya-weather-app\app.py"
+- Current temperature and feels-like temperature
+- Weather conditions, humidity, and wind
+- General preparation suggestions based on the reported weather, such as taking rain protection when rain is expected
+
+Weather can change and may differ across a large sub-county. The suggestions are general guidance, not official alerts. Follow local authority advice during severe weather.
+
+## About the location data
+
+The county and sub-county list comes from the [Kenya Administrative Divisions dataset](https://github.com/open-admin-data/kenya-administrative-divisions), which provides 47 counties and 290 sub-county-level records. The dataset is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Its coordinates are representative points for weather lookups; they are not exact coordinates for every home or place in an area.
+
+Current weather is provided by the [OpenWeatherMap Current Weather API](https://openweathermap.org/api/current).
+
+## For the app owner
+
+The deployed app uses the owner's OpenWeatherMap API key so visitors can use the app without their own keys. Add the key in Streamlit Community Cloud under **App settings → Secrets**. Use this setting name:
+
+```toml
+OPENWEATHER_API_KEY = "your-new-key"
 ```
 
-Replace `C:\path\to\kenya-weather-app` with the folder where you saved these files. Do not run the app with `py app.py`; Streamlit needs to launch it with `py -m streamlit run`.
+Keep the real key private. Do not add it to this repository, `app.py`, or a public message. A public app's visitors share the owner's API usage quota.
 
-## API key and data
-
-The app asks for the API key each session and does not save it to a file or Streamlit secrets. The key is sent from the Streamlit server to OpenWeatherMap to request weather. Use a key you control and follow OpenWeatherMap's terms and usage limits.
-
-Administrative location data is loaded from the [Open Admin Data Kenya dataset](https://github.com/open-admin-data/kenya-administrative-divisions), licensed CC BY 4.0. The app checks that it receives 290 valid sub-county records across 47 counties before showing the selectors. An internet connection is needed to load the list and weather data.
-
-The 290 number is also used for Kenya's constituencies. Some datasets label the corresponding level “sub-county”; legal/administrative and electoral terminology can differ, and some administrative sources report different counts. This app labels these divisions as sub-counties because that is how its cited source classifies them. Coordinates are representative weather lookup points, not exact locations for every home or place in a sub-county.
-
-Weather data: [OpenWeatherMap Current Weather API](https://openweathermap.org/api/current).
+To publish or update the app, upload `app.py`, `requirements.txt`, `README.md`, and `.gitignore` to the root of a GitHub repository, then deploy that repository through [Streamlit Community Cloud](https://share.streamlit.io/). Streamlit installs the packages listed in `requirements.txt` when it builds the app.
