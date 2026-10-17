@@ -25,14 +25,3 @@ The county and sub-county list comes from the [Kenya Administrative Divisions da
 
 Current weather is provided by the [OpenWeatherMap Current Weather API](https://openweathermap.org/api/current).
 
-## For the app owner
-
-The deployed app uses the owner's OpenWeatherMap API key so visitors can use the app without their own keys. Add the key in Streamlit Community Cloud under **App settings → Secrets**. Use this setting name:
-
-```toml
-OPENWEATHER_API_KEY = "your-new-key"
-```
-
-Keep the real key private. Do not add it to this repository, `app.py`, or a public message. A public app's visitors share the owner's API usage quota.
-
-To publish or update the app, upload `app.py`, `requirements.txt`, `README.md`, and `.gitignore` to the root of a GitHub repository, then deploy that repository through [Streamlit Community Cloud](https://share.streamlit.io/). Streamlit installs the packages listed in `requirements.txt` when it builds the app.
